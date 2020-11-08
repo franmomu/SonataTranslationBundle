@@ -1,5 +1,6 @@
 includes:
     - phpstan-baseline.neon
+    - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
 
 parameters:
@@ -7,6 +8,7 @@ parameters:
 
     paths:
         - src
+        - tests
 
     excludes_analyse:
         - src/Test/DoctrineOrmTestCase.php
