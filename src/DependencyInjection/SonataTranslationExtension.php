@@ -106,7 +106,11 @@ class SonataTranslationExtension extends Extension
     /**
      * @param array $translationTargets
      *
-     * @phpstan-param iterable<array<string, class-string[]>> $translationTargets
+     * @phpstan-param array{
+     *  gedmo?: array{implements: array<array-key, mixed>, instanceof: mixed},
+     *  knplabs?: array{implements: array<array-key, mixed>, instanceof: mixed},
+     *  phpcr?: array{implements: array<array-key, mixed>, instanceof: mixed}
+     * } $translationTargets
      *
      * @return void
      */
