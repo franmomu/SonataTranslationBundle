@@ -78,7 +78,7 @@ jobs:
             - name: Sets PHPUnit 8.5 for PHP 7.2
               if: matrix.php-version == '7.2'
               run: |
-                  echo 'SYMFONY_PHPUNIT_VERSION=8.5' >> $GITHUB_ENV
+                  echo 'SYMFONY_PHPUNIT_VERSION=8.5.9' >> $GITHUB_ENV
 
             - name: Install variant
               if: matrix.variant != 'normal'
