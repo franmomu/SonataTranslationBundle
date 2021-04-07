@@ -4,6 +4,14 @@ UPGRADE 2.x
 UPGRADE FROM 2.x to 2.x
 =======================
 
+### Deprecated `Sonata\TranslationBundle\Model\Gedmo\AbstractPersonalTranslation::__construct()` method
+
+If you are constructing an object that extends from `Sonata\TranslationBundle\Model\Gedmo\AbstractPersonalTranslation`,
+you MUST set "$locale", "$field" or "$value" in your own constructor.
+
+UPGRADE FROM 2.7 to 2.8
+=======================
+
 If you are using this bundle with "gedmo/doctrine-extensions", you MUST to specify the translatable listener service
 name in the configuration.
 

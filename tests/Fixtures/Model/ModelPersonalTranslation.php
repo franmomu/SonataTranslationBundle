@@ -17,4 +17,10 @@ use Sonata\TranslationBundle\Model\Gedmo\AbstractPersonalTranslation;
 
 class ModelPersonalTranslation extends AbstractPersonalTranslation
 {
+    public function __construct(string $locale, string $field, string $value)
+    {
+        $this->setLocale($locale);
+        $this->setField($field);
+        $this->setContent($value);
+    }
 }

@@ -23,6 +23,7 @@ use Gedmo\Translatable\Entity\MappedSuperclass\AbstractPersonalTranslation as Ge
 class AbstractPersonalTranslation extends GedmoAbstractPersonalTranslation
 {
     /**
+     * NEXT_MAJOR: Remove this __construct.
      * Convenient constructor.
      *
      * @param string $locale
@@ -31,6 +32,16 @@ class AbstractPersonalTranslation extends GedmoAbstractPersonalTranslation
      */
     public function __construct($locale = null, $field = null, $value = null)
     {
+        if (\func_num_args() > 0) {
+            @trigger_error(sprintf(
+                'Calling "%s" to set "$locale", "$field" or "$value" is deprecated since'
+                .' sonata-project/translation-bundle 2.x and will not work in 3.0. You MUST set those parameters'
+                 .' in the constructor of the class extending "%s".',
+                __METHOD__,
+                __CLASS__
+            ), \E_USER_DEPRECATED);
+        }
+
         if (null !== $locale) {
             $this->setLocale($locale);
         }
