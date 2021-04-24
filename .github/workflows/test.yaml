@@ -19,6 +19,9 @@ jobs:
 
         continue-on-error: ${{ matrix.allowed-to-fail }}
 
+        env:
+            SYMFONY_REQUIRE: ${{matrix.symfony-require}}
+
         strategy:
             matrix:
                 php-version:
@@ -28,15 +31,18 @@ jobs:
                 dependencies: [highest]
                 allowed-to-fail: [false]
                 variant: [normal]
+                symfony-require:
+                    - ""
                 include:
                     - php-version: '7.3'
                       dependencies: lowest
                       allowed-to-fail: false
                       variant: normal
                     - php-version: '8.0'
+                      symfony-require: "4.4.*"
                       dependencies: highest
                       allowed-to-fail: false
-                      variant: 'symfony/symfony:"4.4.*"'
+                      variant: 'normal'
                     - php-version: '8.0'
                       dependencies: highest
                       allowed-to-fail: false
@@ -53,6 +59,9 @@ jobs:
                   coverage: pcov
                   tools: composer:v2
                   extensions: pdo_sqlite
+
+            - name: "Globally install symfony/flex"
+              run: "composer global require --no-progress --no-scripts --no-plugins symfony/flex"
 
             - name: Add PHPUnit matcher
               run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
